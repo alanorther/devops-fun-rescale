@@ -286,6 +286,7 @@ Resources:
         - !Ref DatabaseSecurityGroup
       AllocatedStorage: 5
       DBInstanceClass: 'db.t3.micro'
+      DBInstanceIdentifier: 'hardwareavailability'
       DBSubnetGroupName: !Ref DatabaseSubnetGroup
       DBName: 'hardwareavailability'
       Engine: 'postgres'
