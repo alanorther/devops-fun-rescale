@@ -21,3 +21,8 @@ module "ecs-fargate" {
           }
       ]
   }
+
+output "fargate_lb" {
+  description = "The DNS name for the load-balancer to reach the application."
+  value = module.ecs-fargate.lb_dns_name
+}
