@@ -17,7 +17,7 @@ module "ecs-fargate" {
       environment = [
           {
               name  = "DB_HOSTNAME"
-              value   = "SOME_RDS_ENDPOINT_VALUE"
+              value   = aws_db_instance.postgres_rds.address
           },
           {
               name = "DB_USERNAME"
