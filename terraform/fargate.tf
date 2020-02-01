@@ -16,8 +16,16 @@ module "ecs-fargate" {
       container_port               = 5000
       environment = [
           {
-              name  = "RDS_ENDPOINT"
+              name  = "DB_HOSTNAME"
               value   = "SOME_RDS_ENDPOINT_VALUE"
+          },
+          {
+              name = "DB_USERNAME"
+              value = "postgres"
+          },
+          {
+              name = "DB_PASSWORD"
+              value = var.db_password
           }
       ]
   }
