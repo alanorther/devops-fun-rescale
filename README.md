@@ -32,6 +32,7 @@ provider "aws" {
 
 ### AWS Rescources Built
 
+```
 aws_eip
 aws_internet_gateway
 aws_nat_gateway
@@ -57,6 +58,7 @@ aws_ecs_task_definition
 aws_iam_role_policy_attachment
 aws_db_instance
 aws_ecr_repository
+```
 
 ### Get Contanier Running Locally
 
@@ -103,7 +105,7 @@ var.db_password
   Enter a value: SuperSecretPassword
 ```
 
-Terraform will out two bit of information, the Fargate LB and the ECR URL. Copy both.
+Terraform will output two bits of information, the Fargate LB and the ECR URL. Copy both.
 
 ```
 Outputs:
@@ -121,6 +123,10 @@ Go to the root folder of the repo and use the build script with the ECR URL.
 ```
 
 Now give it some time to build and deploy. You can check that the app is working by visiting the Fargate LB URL in your browser.
+
+```
+http://rescale-lb-1234567.us-west-2.elb.amazonaws.com
+```
 
 ## Built With
 
