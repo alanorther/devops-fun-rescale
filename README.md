@@ -11,7 +11,9 @@ Requires that AWS Longer Format Resource IDs are enabled in your AWS account.
 ### Versions used
 
 Docker version 19.03.5, build 633a0ea
+
 Terraform v0.12.20
+
 aws-cli/1.17.9 Python/2.7.17 Darwin/18.7.0 botocore/1.14.9
 
 ### AWS Profile Used
@@ -56,7 +58,7 @@ aws_iam_role_policy_attachment
 aws_db_instance
 aws_ecr_repository
 
-### Get Contanier Running Locally (application will not connect to RDS DB locally)
+### Get Contanier Running Locally
 
 Run these in the root folder of the repo:
 
@@ -82,29 +84,43 @@ root@d0180268a0f2:/usr/src/app#
 
 You can now explore the container.
 
-## Running the tests
+## View the portal locally
 
-Explain how to run the automated tests for this system
+You can see the portal page in a browser if the container is running at http://localhost:5000
 
-### Break down into end to end tests
+### Deployment Infrastructure
 
-Explain what these tests test and why
+From the repo's root folder, go to the terraform folder and run Terraform.
 
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
+You need to supply the master password for the PostgreSQL RDS instance.
 
 ```
-Give an example
+devops-fun-rescale $ cd terraform/
+terraform $ terraform apply
+var.db_password
+  The master password for the PostgreSQL RDS instance
+
+  Enter a value: SuperSecretPassword
 ```
 
-## Deployment
+Terraform will out two bit of information, the Fargate LB and the ECR URL. Copy both.
 
-Add additional notes about how to deploy this on a live system
+```
+Outputs:
+
+fargate_lb = rescale-lb-1234567.us-west-2.elb.amazonaws.com
+repository_url = 123456789012.dkr.ecr.us-west-2.amazonaws.com/rescale
+```
+
+### Build and Deploy application container
+
+Go to the root folder of the repo and use the build script with the ECR URL.
+
+```
+./build_push_deploy.sh 123456789012.dkr.ecr.us-west-2.amazonaws.com/rescale
+```
+
+Now give it some time to build and deploy. You can check that the app is working by visiting the Fargate LB URL in your browser.
 
 ## Built With
 
@@ -114,6 +130,7 @@ Add additional notes about how to deploy this on a live system
 
 ### Time Spent
 
+```
 Planning       1
 Start Script   1
 Build/Deploy   1
@@ -123,7 +140,9 @@ Terraform
   ECR          1
   RDS          1
   Fargate      2
+Postgres       1
 Misc.          1
 README.md      1
 ------------------
-Total         13 Hours
+Total         14 Hours
+```
