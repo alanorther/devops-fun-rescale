@@ -14,6 +14,7 @@ module "ecs-fargate" {
       container_memory_reservation = 2048
       essential                    = true
       container_port               = 5000
+      lb_health_check_path         = "/health_check"
       environment = [
           {
               name  = "DB_HOSTNAME"
