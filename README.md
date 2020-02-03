@@ -88,7 +88,7 @@ You can now explore the container.
 
 ## View the portal locally
 
-You can see the portal page in a browser if the container is running at http://localhost:5000
+You can see the portal page in a browser if the container is running at http://localhost:8000
 
 ### Deployment Infrastructure
 
