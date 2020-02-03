@@ -20,7 +20,7 @@ if [ $status -ne 0 ]; then
   exit $status
 fi
 
-while sleep 60; do
+while sleep 600; do
   ps aux |grep portal.py |grep -q -v grep
   PROCESS_1_STATUS=$?
   ps aux |grep hardware.py |grep -q -v grep

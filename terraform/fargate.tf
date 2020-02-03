@@ -9,9 +9,9 @@ module "ecs-fargate" {
       private_subnets_ids = module.vpc.private_subnets
       container_name               = "rescale"
       container_image              = "363321713206.dkr.ecr.us-west-2.amazonaws.com/rescale:latest"
-      container_cpu                = 512
-      container_memory             = 1024
-      container_memory_reservation = 1024
+      container_cpu                = 1024
+      container_memory             = 2048
+      container_memory_reservation = 2048
       essential                    = true
       container_port               = 5000
       environment = [
