@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Create table and insert data into the DB if it doesn't exist
-#echo "$DB_HOSTNAME:5432:rescale:postgres:$DB_PASSWORD" > ~/.pgpass; chmod 600 ~/.pgpass
-#psql -h $DB_HOSTNAME -U $DB_USERNAME -d rescale -f psql-database.sql
+echo "$DB_HOSTNAME:5432:rescale:postgres:$DB_PASSWORD" > ~/.pgpass; chmod 600 ~/.pgpass
+psql -h $DB_HOSTNAME -U $DB_USERNAME -d rescale -f psql-database.sql
 
 # Start the first process
 python portal.py &
