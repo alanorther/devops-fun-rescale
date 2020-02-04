@@ -18,7 +18,7 @@ aws-cli/1.17.9 Python/2.7.17 Darwin/18.7.0 botocore/1.14.9
 
 ### AWS Profile Used
 
-By default this used the default profile in your ~/.aws/credentials file.
+By default this uses the default profile in your ~/.aws/credentials file.
 
 To change the profile used, change the profile in the terraform/provider.tf file:
 
