@@ -30,7 +30,7 @@ provider "aws" {
 }
 ```
 
-### AWS Rescources Built
+### AWS Resources Built
 
 ```
 aws_eip
