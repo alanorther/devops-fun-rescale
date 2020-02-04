@@ -60,7 +60,7 @@ aws_db_instance
 aws_ecr_repository
 ```
 
-### Get Contanier Running Locally
+### Get Contanier Running Locally - REQUIRES LOCAL Postgres DB and ENV VARs 
 
 Run these in the root folder of the repo:
 
@@ -146,9 +146,9 @@ Terraform
   ECR          1
   RDS          1
   Fargate      2
-Postgres       1
+Postgres       2
 Misc.          1
 README.md      1
 ------------------
-Total         14 Hours
+Total         15 Hours
 ```
