@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:9.6.3-alpine
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: 'postgres'
+    volumes:
+      - database_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./:/usr/src/app:rw
+    ports:
+      - "5000:5000"
+    links:
+      - db
+    environment:
+      DB_PORT: "5432"
+      DB_HOSTNAME: "db"
+      DB_DATABASE: "postgres"
+      DB_USERNAME: "postgres"
+      DB_PASSWORD: "postgres"
+
+volumes:
+  # for persistance of database data
+  database_data:
+    driver: local

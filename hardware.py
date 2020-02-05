@@ -6,9 +6,11 @@ import os
 
 application = Flask(__name__)
 
-DB_HOSTNAME=os.environ.get('DB_HOSTNAME')
-DB_USERNAME=os.environ.get('DB_USERNAME')
-DB_PASSWORD=os.environ.get('DB_PASSWORD')
+DB_HOSTNAME = os.environ.get('DB_HOSTNAME',"localhost")
+DB_PORT     = os.environ.get('DB_PORT', "5432")
+DB_DATABASE = os.environ.get('DB_DATABASE', "rescale")
+DB_USERNAME = os.environ.get('DB_USERNAME')
+DB_PASSWORD = os.environ.get('DB_PASSWORD')
 
 def slow_process_to_calculate_availability(provider, name):
     time.sleep(5)
@@ -18,11 +20,11 @@ def slow_process_to_calculate_availability(provider, name):
 @application.route('/hardware/')
 def hardware():
     try:
-        connection = psycopg2.connect(user = DB_USERNAME,
+        connection = psycopg2.connect(user     = DB_USERNAME,
                                       password = DB_PASSWORD,
-                                      host = DB_HOSTNAME,
-                                      port = "5432",
-                                      database = "rescale")
+                                      host     = DB_HOSTNAME,
+                                      port     = DB_PORT,
+                                      database = DB_DATABASE)
 
         cursor = connection.cursor()
 
